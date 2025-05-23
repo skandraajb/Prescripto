@@ -1,0 +1,92 @@
+.dashboard-container {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .dashboard-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-content {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* Left Side - Cards */
+  .dashboard-left {
+    flex: 3;
+  }
+  
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-icon {
+    font-size: 40px;
+    color: #004c8c;
+    margin-bottom: 10px;
+  }
+  
+  .view-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #014770;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .view-btn:hover {
+    background: #0275d8;
+  }
+  
+  /* Right Side - Recent Activity */
+  .dashboard-right {
+    flex: 2;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recent-activity-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .recent-activity-list li {
+    background: #f9f9f9;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  @media (max-width: 768px) {
+    .dashboard-content {
+      flex-direction: column;
+    }
+  
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  

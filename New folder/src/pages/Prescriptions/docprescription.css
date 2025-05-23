@@ -1,0 +1,184 @@
+.doctor-prescription-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .view-section, .add-section {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+  
+  .search-bar {
+    margin-bottom: 15px;
+  }
+  
+  .searchid {
+    padding: 10px;
+    width: 30%;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .prescription-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .prescription-table th, .prescription-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .prescription-table th {
+    background-color: #e0f0ff;
+  }
+  
+  .prescription-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .prescription-form input,
+  .prescription-form textarea,
+  .prescription-form select {
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .medicine-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .medicine-row h3 {
+    margin: 0;
+    width: 100%;
+  }
+  
+  .medicine-row input {
+    width: 200px;
+  }
+  
+  .dosage-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .dosage-controls button {
+    padding: 8px 15px;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    width: auto;
+  }
+  
+  .sub, .remove, .add {
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .remove {
+    background-color: rgb(170, 170, 170);
+    height: 40px;
+    font-size: 20px;
+  }
+  
+  .sub {
+    background-color: #0c4e7a;
+  }
+  
+  .add {
+    background-color: #2980b9;
+    height: 40px;
+    font-size: 20px;
+    padding-left: 10px;
+  }
+  
+  .sub:hover, .add:hover, .remove:hover {
+    background-color: #2980b9;
+  }
+  
+  .plus {
+    background-color: #0472bb;
+    border: none;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    color: white;
+  }
+  
+  .minus {
+    background-color: rgb(179, 178, 178);
+    border: none;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    color: white;
+  }
+  .medicine-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .medicine-table th,
+  .medicine-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  .medicine-table th {
+    background-color: #e0f0ff;
+    color: #333;
+  }
+  
+  .dosage-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .dosage-controls input {
+    width: 50px;
+    text-align: center;
+  }
+  .arrow{
+    border:none;
+    border-radius: 50px;
+    color: white;
+    background-color: grey;
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    transition: ease 0.3s;
+  }
+  .arrow:hover{
+    background-color: rgb(192, 192, 192);
+    cursor: pointer;
+  }

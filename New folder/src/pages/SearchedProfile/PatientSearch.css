@@ -1,0 +1,84 @@
+.searched-patient-profile {
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f8fb;
+    min-height: 100vh;
+    text-align: center;
+  }
+  
+  .profile-header {
+    margin-bottom: 30px;
+  }
+  
+  .profile-icon {
+    font-size: 90px;
+    color: #004c8c;
+    margin-bottom: 10px;
+  }
+  
+  .profile-header h2 {
+    margin: 5px 0;
+    color: #003366;
+  }
+  
+  .profile-header p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .filter-section {
+    margin-bottom: 25px;
+    font-size: 16px;
+  }
+  
+  .prescription-list {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .prescription-list table {
+    width: 90%;
+    max-width: 900px;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 76, 140, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .prescription-list th {
+    background-color: #004c8c;
+    color: white;
+    padding: 14px;
+    text-align: left;
+    font-weight: normal;
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  .prescription-list td {
+    padding: 14px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .prescription-list tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .view-btn {
+    background-color: #0078d4;
+    color: white;
+    padding: 6px 14px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .view-btn:hover {
+    background-color: #005fa3;
+  }
+  

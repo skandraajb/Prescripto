@@ -1,0 +1,74 @@
+/* UserList Styles */
+
+.user-list-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px 25px;
+  background: #f9fafb;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.user-list-container h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.user-list-error {
+  color: #e74c3c;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.user-list-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-list-li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 12px 20px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.user-list-li:hover {
+  background-color: #eaf2fb;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.user-list-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.user-list-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  box-shadow: 0 2px 6px rgba(52, 152, 219, 0.5);
+}
+
+.user-list-button:hover,
+.user-list-button:focus {
+  background-color: #2980b9;
+  outline: none;
+  box-shadow: 0 3px 10px rgba(41, 128, 185, 0.7);
+}
