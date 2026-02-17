@@ -1,0 +1,41 @@
+.prescription-details {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.details-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details-card h2 {
+  color: #004c8c;
+  margin-top: 20px;
+}
+
+.details-card ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.details-card li {
+  margin-bottom: 10px;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background: #014770;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+
+.back-btn:hover {
+  background: #0279a9;
+}

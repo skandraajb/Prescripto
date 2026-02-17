@@ -1,0 +1,40 @@
+.search-results-container {
+    padding: 2rem;
+  }
+  
+  .search-ip {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 1rem 0;
+    font-size: 16px;
+  }
+  
+  .results-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .results-table th,
+  .results-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .view-button {
+    background-color: #0a9396;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .view-button:hover {
+    background-color: #00777b;
+  }
+  

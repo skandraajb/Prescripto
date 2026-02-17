@@ -1,0 +1,142 @@
+/* Container for First Name and Last Name side by side */
+.Name_i {
+  display: flex;
+  margin-top: 15px;
+  gap: 10px; /* space between first and last name inputs */
+}
+.signup-form{
+  height: 450px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 60vh;
+
+}
+
+/* Shared input styles for first name, last name, and other inputs */
+.firstname,
+.lastname,
+.contact_i,
+.signup-email-input input,
+.signup-password-input input,
+.phone_i,
+.gender_i,
+.dob_i,
+.address_i,
+.bloodGroup_i,
+.medicalHistory_i,
+.profilePic_i {
+  height: 30px;
+  border: 1px solid #888c8c;
+  outline: none;
+  border-radius: 3px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 4px 8px;
+  font-size: 14px;
+  width: 95%;
+  box-sizing: border-box;
+  margin: 5px;
+  margin-left: 10px;
+}
+
+/* For first name and last name inputs, flex:1 to share container */
+.firstname,
+.lastname {
+  flex: 1;
+}
+
+/* Margin containers for form fields */
+.Contact,
+.signup-email-input,
+.signup-password-input,
+.phone-container,
+.gender-container,
+.dob-container,
+.address-container,
+.bloodGroup-container,
+.medicalHistory-container,
+.profilePic-container {
+  margin-left: 20px;
+  margin-top: 10px;
+  max-width: 320px;
+}
+
+/* Smaller width on mobile */
+@media (max-width: 992px) {
+  .signup-form {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    height: auto;
+  }
+  .signup-form{
+  height: 450px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 60vh;
+
+}
+}
+
+/* Same styles for tablets */
+@media (max-width: 768px) {
+  .signup-form {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    height: auto;
+  }
+  .signup-form{
+  height: 450px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 60vh;
+
+}
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .signup-form {
+    padding: 1rem 40px 1rem 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .Name_i {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  /* Make all inputs full width & remove margin-left on small screens */
+  .firstname,
+  .lastname,
+  .contact_i,
+  .signup-email-input input,
+  .signup-password-input input,
+  .phone_i,
+  .gender_i,
+  .dob_i,
+  .address_i,
+  .bloodGroup_i,
+  .medicalHistory_i,
+  .profilePic_i,
+  .Contact,
+  .signup-email-input,
+  .signup-password-input,
+  .phone-container,
+  .gender-container,
+  .dob-container,
+  .address-container,
+  .bloodGroup-container,
+  .medicalHistory-container,
+  .profilePic-container {
+    width: 100%;
+    margin-left: 0;
+  }
+  .signup-form{
+  height: 450px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 60vh;
+
+}
+}

@@ -1,0 +1,69 @@
+.doctor-dashboard {
+    padding: 20px;
+  }
+  
+  .dashboard-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-content {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .stats-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 40%;
+  }
+  
+  .card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .details-section {
+    width: 60%;
+  }
+  
+  .appointments, .recent-prescriptions {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .view-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #014770;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .view-btn:hover {
+    background: #0275d8;
+  }
+  @media (max-width: 768px) {
+    .dashboard-content {
+      flex-direction: column;
+    }
+  
+    .stats-section,
+    .details-section {
+      width: 100%;
+    }
+  }
