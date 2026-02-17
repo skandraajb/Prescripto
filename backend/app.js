@@ -19,7 +19,7 @@ const app = express();
 // Middleware order is important:
 app.use(cookieParser());
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://prescripto-frontend-h7s4.onrender.com',
   credentials: true,
 }));
 app.use(express.json());
