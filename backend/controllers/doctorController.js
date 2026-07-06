@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const DoctorVerification = require("../models/DoctorVerification");
-const { createDoctorVerification } = require("../services/serviceNowService");
+const { createDoctorVerification } = require("../Services/serviceNowService");
 
 // =======================================
 // Submit Doctor Verification
