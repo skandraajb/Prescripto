@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../App";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../api/apiConfig";
 import "./signin.css";
 
 const Signin = () => {
@@ -32,12 +32,9 @@ const Signin = () => {
 
   const handleSignin = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        formData,
-        {
-          withCredentials: true,
-        }
+      const response = await api.post(
+        "/auth/login",
+        formData
       );
       console.log("LOGIN RESPONSE:", response.data);
       alert("Signin successful!");

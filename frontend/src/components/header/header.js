@@ -9,7 +9,7 @@ import { MdCategory } from "react-icons/md";
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import { BiLogOut } from "react-icons/bi";
 import { AiOutlineUser } from 'react-icons/ai';
-import axios from "axios";
+import api from "../../api/apiConfig";
 import './header.css';
 
 const Header = () => {
@@ -37,7 +37,7 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:5000/api/auth/logout', {}, { withCredentials: true });
+      await api.post('/auth/logout', {}, { withCredentials: true });
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       setOpen(false);
@@ -99,7 +99,7 @@ const Header = () => {
         </>
       );
     }
-    return null; // No role? No private links
+    return null;
   };
 
   return (

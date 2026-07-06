@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../api/apiConfig';
 import './docEdit.css';
 
 const EditDoctorProfile = () => {
@@ -19,7 +19,7 @@ const EditDoctorProfile = () => {
   const userId = JSON.parse(localStorage.getItem('user'))._id;
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/doctors/${userId}`)
+    api.get(`/doctors/${userId}`)
       .then(response => {
         setFormData({
           name: response.data.name || '',
@@ -47,7 +47,7 @@ const EditDoctorProfile = () => {
     setSuccessMsg('');
 
     try {
-      await axios.put(`http://localhost:5000/api/doctors/${userId}`, formData);
+      await api.put(`/doctors/${userId}`, formData);
       setSuccessMsg('Profile updated successfully!');
     } catch {
       setError('Failed to update profile');
@@ -59,7 +59,6 @@ const EditDoctorProfile = () => {
   return (
     <div className="edit-profile-container">
       <h2>Edit Doctor Profile</h2>
-      
 
       <form onSubmit={handleSubmit} className="edit-profile-form">
         <label>Name</label>
@@ -111,9 +110,13 @@ const EditDoctorProfile = () => {
           onChange={handleChange}
           className="input-field"
         />
+
         {error && <p className="error-msg">{error}</p>}
         {successMsg && <p className="success-msg">{successMsg}</p>}
-        <button type="submit" className="submit-btn">Save Changes</button>
+
+        <button type="submit" className="submit-btn">
+          Save Changes
+        </button>
       </form>
     </div>
   );

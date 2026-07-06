@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../api/apiConfig';
 import './patientEdit.css';
 
 const EditPatientProfile = () => {
@@ -17,7 +17,7 @@ const EditPatientProfile = () => {
   const userId = JSON.parse(localStorage.getItem('user'))?._id;
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/patients/${userId}`)
+    api.get(`/patients/${userId}`)
       .then(res => {
         setFormData(res.data);
       })
@@ -31,7 +31,7 @@ const EditPatientProfile = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/patients/${userId}`, formData);
+      await api.put(`/patients/${userId}`, formData);
       alert('Profile updated successfully!');
     } catch (err) {
       console.error(err);
@@ -47,7 +47,7 @@ const EditPatientProfile = () => {
         <input name="name" value={formData.name} onChange={handleChange} required />
 
         <label>Email</label>
-        <input name="email" value={formData.email } disabled />
+        <input name="email" value={formData.email} disabled />
 
         <label>Phone</label>
         <input name="phone" value={formData.phone} onChange={handleChange} />

@@ -3,6 +3,8 @@ import './docProfile.css';
 import { FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+
 const DoctorProfile = () => {
   const [doctorData, setDoctorData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -19,7 +21,7 @@ const DoctorProfile = () => {
         }
 
         const { _id } = JSON.parse(storedUser);
-        const res = await fetch(`http://localhost:5000/api/doctors/${_id}`);
+        const res = await fetch(`${API_URL}/doctors/${_id}`);
 
         if (!res.ok) {
           const err = await res.json();

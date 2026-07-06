@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../api/apiConfig";
 import { MyContext } from "../../App";
 import "./signup.css";
 
@@ -31,8 +31,8 @@ const DoctorSignup = () => {
 
     const handleSignup = async () => {
         try {
-            const response = await axios.post(
-                "http://localhost:5000/api/auth/signup",
+            const response = await api.post(
+                "/auth/signup",
                 formData
             );
 
