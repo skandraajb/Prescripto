@@ -33,11 +33,16 @@ const Appointment = () => {
 
     const fetchAppointments = async () => {
       try {
+        console.log(api.defaults.baseURL);
         const res = await api.get('/appointments');
         console.log('Appointments from backend:', res.data);
         setAppointments(res.data);
       } catch (error) {
-        console.error('Error fetching appointments:', error);
+        console.log("Status:", error.response?.status);
+        console.log("Data:", error.response?.data);
+        console.log("URL:", error.config?.url);
+        console.log("Base URL:", error.config?.baseURL);
+        console.log(error);
       }
     };
 

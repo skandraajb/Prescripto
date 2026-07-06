@@ -5,7 +5,11 @@ import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Home from './pages/Home/index';
 import Signin from './pages/Signin/index';
-import Signup from './pages/Signup/index';
+import ChooseRole from './pages/Signup/ChooseRole';
+import PatientSignup from './pages/Signup/PatientSignup';
+import DoctorSignup from "./pages/Signup/DoctorSignup";
+import DoctorVerification from "./pages/Signup/DoctorVerification";
+import VerificationStatus from "./pages/Signup/VerificationStatus";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard/index";
 import DoctorDashboard from "./pages/Dashboard/doctorindex";
@@ -41,7 +45,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/SignIn" element={<Signin />} />
-          <Route path="/Signup" element={<Signup />} />
+          <Route path="/signup" element={<ChooseRole />} />
+          <Route path="/signup/patient" element={<PatientSignup />} />
+          <Route path="/signup/doctor" element={<DoctorSignup />} />
+          <Route path="/doctor/verification" element={<DoctorVerification />} />
+          <Route path="/doctor/verification-status" element={<VerificationStatus />}/>
           <Route path="/About" element={<About />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/DoctorDashboard" element={<DoctorDashboard />} />

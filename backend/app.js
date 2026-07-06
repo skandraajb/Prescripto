@@ -10,6 +10,7 @@ const doctorRoutes = require('./routes/doctor');
 const patientRoutes = require('./routes/patient');
 const appointmentRoutes = require('./routes/appointmentRoutes');
 const prescriptionRoutes = require('./routes/prescriptionRoutes');
+const doctorVerificationRoutes = require("./routes/doctorVerificationRoutes");
 
 
 dotenv.config();
@@ -19,11 +20,15 @@ const app = express();
 // Middleware order is important:
 app.use(cookieParser());
 app.use(cors({
-  origin: 'https://prescripto-frontend-h7s4.onrender.com',
+  origin: 'http://localhost:3000', // Your frontend URL
   credentials: true,
 }));
 app.use(express.json());
 
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.originalUrl}`);
+  next();
+});
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api', protectedRoutes);
@@ -31,6 +36,7 @@ app.use('/api/doctors', doctorRoutes);
 app.use('/api/patients', patientRoutes);
 app.use('/api/appointments', appointmentRoutes);
 app.use('/api/prescriptions', prescriptionRoutes);
+app.use('/api/doctor', doctorVerificationRoutes);
 
 
 // Connect DB and start server

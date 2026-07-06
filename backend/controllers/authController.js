@@ -10,7 +10,9 @@ const generateToken = (user) => {
   );
 };
 
+// ======================
 // SIGNUP
+// ======================
 exports.signup = async (req, res) => {
   const {
     name,
@@ -27,36 +29,40 @@ exports.signup = async (req, res) => {
   } = req.body;
 
   try {
-    // Check if email already registered
+    // Check if email already exists
     const userExists = await User.findOne({ email });
-    if (userExists) return res.status(400).json({ message: 'Email already in use' });
 
-    // Generate customId based on role prefix
-    const rolePrefix = role === 'doctor' ? 'd' : 'p';
+    if (userExists) {
+      return res.status(400).json({
+        message: 'Email already in use'
+      });
+    }
 
-    // Find user with highest customId number for this role
-    const lastUser = await User.find({ 
-      role, 
+    // Generate Custom ID
+    const rolePrefix = role === "doctor" ? "d" : "p";
+
+    const lastUser = await User.find({
+      role,
       customId: { $regex: `^${rolePrefix}\\d+$` }
     })
-    .sort({ customId: -1 })
-    .limit(1);
+      .sort({ customId: -1 })
+      .limit(1);
 
     let nextNumber = 1;
+
     if (lastUser.length > 0) {
-      const lastCustomId = lastUser[0].customId;
-      const lastNumber = parseInt(lastCustomId.slice(1), 10);
+      const lastNumber = parseInt(lastUser[0].customId.slice(1), 10);
       nextNumber = lastNumber + 1;
     }
 
     const customId = `${rolePrefix}${nextNumber}`;
 
-    // Hash password
+    // Hash Password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Create user document
-    const user = await User.create({
+    // User Data
+    const userData = {
       customId,
       name,
       email,
@@ -69,80 +75,119 @@ exports.signup = async (req, res) => {
       bloodGroup,
       medicalHistory,
       profilePic
-    });
+    };
 
-    // Generate JWT token
+    // Doctor accounts start in Draft verification state
+    if (role === "doctor") {
+      userData.verificationStatus = "Draft";
+    }
+
+    const user = await User.create(userData);
+
+    // JWT
     const token = generateToken(user);
 
-    // Set token in HTTP-only cookie
-    res.cookie('token', token, {
+    res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
-    // Send user info (exclude password)
     res.status(201).json({
+      token,
       _id: user._id,
       customId: user.customId,
       name: user.name,
       email: user.email,
       role: user.role,
+      verificationStatus: user.verificationStatus
     });
 
   } catch (error) {
-    console.error('Signup error:', error);
-    res.status(500).json({ message: 'Server error during signup' });
+    console.error("Signup error:", error);
+
+    res.status(500).json({
+      message: "Server error during signup"
+    });
   }
 };
 
+// ======================
 // LOGIN
+// ======================
 exports.login = async (req, res) => {
+
   const { email, password, role } = req.body;
 
   try {
-    // Find user by email and role
-    const user = await User.findOne({ email, role });
-    if (!user) return res.status(401).json({ message: 'Invalid email or password' });
 
-    // Check password match
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(401).json({ message: 'Invalid email or password' });
-
-    // Generate JWT token
-    const token = generateToken(user);
-
-    // Set token in HTTP-only cookie
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    const user = await User.findOne({
+      email,
+      role
     });
 
-    // Send user info AND token (fix added here)
+    if (!user) {
+      return res.status(401).json({
+        message: "Invalid email or password"
+      });
+    }
+
+    const isMatch = await bcrypt.compare(
+      password,
+      user.password
+    );
+
+    if (!isMatch) {
+      return res.status(401).json({
+        message: "Invalid email or password"
+      });
+    }
+
+    const token = generateToken(user);
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    });
+
     res.json({
-      token,   // <--- added token here for frontend use
+      token,
       _id: user._id,
       customId: user.customId,
       name: user.name,
       email: user.email,
       role: user.role,
+      verificationStatus: user.verificationStatus
     });
 
   } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({ message: 'Server error during login' });
+
+    console.error("Login error:", error);
+
+    res.status(500).json({
+      message: "Server error during login"
+    });
+
   }
+
 };
 
+// ======================
 // LOGOUT
+// ======================
 exports.logout = (req, res) => {
-  res.clearCookie('token', {
+
+  res.clearCookie("token", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax"
   });
-  res.json({ message: 'Logged out successfully' });
+
+  res.json({
+    message: "Logged out successfully"
+  });
+
 };

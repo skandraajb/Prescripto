@@ -13,9 +13,29 @@ const userSchema = new mongoose.Schema({
   bloodGroup: String,
   medicalHistory: String,
   profilePic: String,
-  specialization: String, // only for doctor
-  experience: String,     // only for doctor
-  location: String 
+  location: String,
+
+  // Verification
+  verificationStatus: {
+    type: String,
+    enum: ["Draft", "Submitted", "Approved", "Rejected"],
+    default: null
+  },
+
+  serviceNowRequestId: {
+    type: String,
+    default: null
+  },
+
+  rejectionReason: {
+    type: String,
+    default: ""
+  },
+  verifiedAt: {
+    type: Date,
+    default: null
+  }
+
 }, {
   timestamps: true
 });
