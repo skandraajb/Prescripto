@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { MyContext } from "../../App";
+import api from "../../api/apiConfig";
 import "./signup.css";
 
 const DoctorVerification = () => {
@@ -61,9 +61,9 @@ const DoctorVerification = () => {
             const token = localStorage.getItem("token");
             console.log("TOKEN BEFORE SUBMIT:", token);
 
-            await axios.post(
+            await api.post(
 
-                "http://localhost:5000/api/doctor/submit",
+                "/doctor/submit",
 
                 {
                     registrationNumber: formData.registrationNumber,
