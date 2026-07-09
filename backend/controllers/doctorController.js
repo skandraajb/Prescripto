@@ -121,3 +121,61 @@ exports.getVerificationStatus = async (req, res) => {
     }
 
 };
+// =======================================
+// Update Verification Status (ServiceNow)
+// =======================================
+
+exports.updateVerificationStatus = async (req, res) => {
+
+    try {
+
+        const {
+            serviceNowRequestId,
+            status,
+            remarks
+        } = req.body;
+
+        if (!serviceNowRequestId || !status) {
+            return res.status(400).json({
+                message: "serviceNowRequestId and status are required."
+            });
+        }
+
+        const doctor = await User.findOne({
+            serviceNowRequestId
+        });
+
+        if (!doctor) {
+            return res.status(404).json({
+                message: "Doctor not found."
+            });
+        }
+
+        doctor.verificationStatus = status;
+
+        if (status === "Approved") {
+            doctor.verifiedAt = new Date();
+            doctor.rejectionReason = "";
+        }
+
+        if (status === "Rejected") {
+            doctor.rejectionReason = remarks || "";
+        }
+
+        await doctor.save();
+
+        res.status(200).json({
+            message: "Verification status updated successfully."
+        });
+
+    } catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+            message: "Internal Server Error"
+        });
+
+    }
+
+};

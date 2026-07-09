@@ -1,11 +1,12 @@
 const express = require("express");
 
 const router = express.Router();
-
 const {
 
     submitVerification,
-    getVerificationStatus
+    getVerificationStatus,
+    updateVerificationStatus
+
 } = require("../controllers/doctorController");
 
 const {
@@ -31,6 +32,13 @@ router.get(
     protect,
 
     getVerificationStatus
+
+);
+router.post(
+
+    "/update-status",
+
+    updateVerificationStatus
 
 );
 
